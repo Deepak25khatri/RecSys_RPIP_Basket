@@ -37,7 +37,7 @@ The model comprises the following components:
 ## Usage
 
 1. Ensure that the required dependencies (`numpy`, `pandas`, `scipy`) are installed.
-2. Place the dataset file `'ta_feng_all_months_merged.csv'` in the `'archive (1)'` directory.
+2. Place the dataset file `'ta_feng_all_months_merged.csv'` in the directory.
 3. Run the code to train the model, optimize the parameters, and obtain the ranked list of items for a user.
 4. The HLU score for the specified user will be printed at the end.
 
@@ -57,10 +57,10 @@ The following parameters can be adjusted in the code:
 
 This code is provided as an example implementation and may require further modifications or optimizations for specific use cases or datasets.
 ## Contribution    
-Nisarg Ganatra		(202311018)
-Deepak Khatri		(202311042)
-Shubham Shah		(202311049)
-Vikram Sarvagyam	(202318034)
+1. Nisarg Ganatra		(202311018)
+2. Deepak Khatri		(202311042)
+3. Shubham Shah		(202311049)
+4. Vikram Sarvagyam	(202318034)
 
 
 ## License
