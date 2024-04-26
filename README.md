@@ -10,42 +10,58 @@ This Jupyter notebook presents a method for making personalized item recommendat
 - **Evaluation**: Assessing the effectiveness of the model using various metrics.
 - **Visualization**: Visualizing the relationships and patterns among different items in the baskets.
 
-## Prerequisites
-To run this notebook, you will need the following packages:
-- Pandas
-- NumPy
-- Scikit-Learn
-- Matplotlib
-- Seaborn
+# Bayesian Fusion Model (BFM) with Constraints
 
-Ensure that your Python environment is set up with these dependencies.
+This code implements a Bayesian Fusion Model (BFM) with constraints for personalized item ranking and recommendation. The BFM combines user-item associations, item-basket associations, and user-basket associations to predict the relevance of items for a given user and basket. Additionally, it incorporates a constraint based on Pointwise Mutual Information (PMI) to capture item co-occurrence patterns.
 
-## Installation
-Clone this repository to your local machine using:
-```bash
-git clone <repository-url>
-```
-Navigate into the project directory:
-```bash
-cd <repository-directory>
-```
-Install the required Python packages:
-```bash
-pip install -r requirements.txt
-```
+## Dataset
+
+The code reads and processes a dataset from a CSV file `'ta_feng_all_months_merged.csv'`. It filters the data, creates mappings for customer and product IDs, and groups transactions into baskets.
+
+## Model
+
+The model comprises the following components:
+
+1. **Singular Value Decomposition (SVD)**: SVD is applied to the user-item interaction matrix to obtain initial user and item factor vectors.
+
+2. **Bayesian Fusion Model (BFM)**: The BFM score is calculated as a weighted combination of user-item, item-basket, basket-basket, and user-basket associations.
+
+3. **Constrained BFM (CBFM)**: The CBFM incorporates a constraint based on the PMI matrix to capture item co-occurrence patterns within the basket.
+
+4. **Parameter Optimization**: The user and item factor vectors are optimized using stochastic gradient descent, with the objective of maximizing the BFM score while minimizing the CBFM constraint.
+
+5. **Item Ranking**: Items are ranked for a given user by combining the BFM score and the CBFM constraint.
+
+6. **Half-Life Utility (HLU)**: The HLU score is calculated for the ranked list of items, providing a measure of recommendation quality.
 
 ## Usage
-To run the notebook:
-1. Open your terminal.
-2. Navigate to the project directory.
-3. Run Jupyter Notebook:
-```bash
-jupyter notebook
-```
-4. Open the `Basket_sensitive.ipynb` file from the Jupyter interface.
 
-## Contributing
-Contributions to this project are welcome! Please fork the repository and submit a pull request with your suggested changes.
+1. Ensure that the required dependencies (`numpy`, `pandas`, `scipy`) are installed.
+2. Place the dataset file `'ta_feng_all_months_merged.csv'` in the `'archive (1)'` directory.
+3. Run the code to train the model, optimize the parameters, and obtain the ranked list of items for a user.
+4. The HLU score for the specified user will be printed at the end.
+
+## Configuration
+
+The following parameters can be adjusted in the code:
+
+- `num_factors`: Number of factors for SVD decomposition.
+- `alpha`: Regularization parameter for the CBFM constraint.
+- `learning_rate`: Learning rate for parameter optimization.
+- `epochs`: Number of epochs for parameter optimization.
+- `GAMMA1`, `GAMMA2`, `GAMMA3`, `GAMMA4`: Weights for the BFM score components.
+- `beta`: Half-life parameter for HLU calculation.
+- `C`: Scaling factor for HLU calculation.
+
+## Note
+
+This code is provided as an example implementation and may require further modifications or optimizations for specific use cases or datasets.
+## Contribution    
+Nisarg Ganatra		(202311018)
+Deepak Khatri		(202311042)
+Shubham Shah		(202311049)
+Vikram Sarvagyam	(202318034)
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
